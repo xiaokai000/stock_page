@@ -1,32 +1,26 @@
 <template>
   <div class="hello">
 
-    <el-row>
-      <el-col :span="4"><div class="grid-content bg-purple" /></el-col>
-      <el-col :span="16"><div class="grid-content bg-purple-light" />
-          <div style="padding: 40px">
-            <div class="item" v-for="(item, index) in news" :key="index">
-              <div style="margin-bottom: 10px; display: flex; justify-content: space-between;">
-                  <div>
-                    <a target="_blank" :href="'https://data.eastmoney.com/notices/detail/' + item.stock_code + '/' + item._id  + '.html'">{{ item.notice_title }}</a>
-                  </div>
-                  <div>{{ item.notice_time }}</div>
+    <div style="padding: 10px">
+        <div class="item" v-for="(item, index) in news" :key="index">
+          <div style="margin-bottom: 10px; ">
+              <div>
+                <a target="_blank" :href="'https://data.eastmoney.com/notices/detail/' + item.stock_code + '/' + item._id  + '.html'">{{ item.notice_title }}</a>
               </div>
-              <div style="display: flex; justify-content: flex-end;">
-                  <div style="color:blue">
-                    <a target="_blank" :href="'https://xueqiu.com/S/' + item.area + item.stock_code">{{ item.stock_name }}</a>
-                  </div>
-              </div>
-            </div>
-            <div class="pagination">
-              <el-pagination background layout="prev, pager, next" :total="total" @current-change="currentChange" />
-            </div>
-            
+
           </div>
-           
-      </el-col>
-      <el-col :span="4"><div class="grid-content bg-purple" /></el-col>
-    </el-row>
+          <div style="display: flex; justify-content: space-between; margin-top:20px">
+              <div>{{ item.notice_time }}</div>
+              <div >
+                <a target="_blank" :href="'https://xueqiu.com/S/' + item.area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </div>
+        <div class="pagination">
+          <el-pagination background layout="prev, pager, next" :total="total" @current-change="currentChange" />
+        </div>
+        
+      </div>
 
   </div>
 </template>
@@ -50,7 +44,7 @@ export default {
 
     getNews(){
       let that= this
-      axios.get('http://127.0.0.1:15006/', { 
+      axios.get('http://121.4.102.234:15006/api', { 
         params: {
             page: this.page        // 参数 firstName
         }
@@ -90,11 +84,12 @@ a {
 
   text-decoration: none;
 }
+
 .item {
   border-radius: 10px;
   background: 	#DCDCDC;
   padding: 10px 30px;
-  height: 50px;
+
   margin: 20px;
 
 }
@@ -102,5 +97,6 @@ a {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 </style>
