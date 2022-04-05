@@ -44,7 +44,7 @@ export default {
 
     getNews(){
       let that= this
-      axios.get('http://121.4.102.234:15006/api', { 
+      axios.get('/api', { 
         params: {
             page: this.page        // 参数 firstName
         }
