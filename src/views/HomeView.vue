@@ -90,7 +90,7 @@ export default {
 
     getNews(){
       let that= this
-      axios.get('/api', {
+      axios.get('/api/news', {
         params: {
             page: this.page        // 参数 firstName
         }
@@ -106,7 +106,7 @@ export default {
 
     statistics(){
       let that= this
-      axios.get('/statistics')
+      axios.get('/api/statistics')
       .then(function (response) {
         console.log(response)
         that.one_plate = response.data.one_plate
