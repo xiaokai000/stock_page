@@ -166,7 +166,7 @@ export default {
 
     getNews(){
       let that= this
-      axios.get('http://121.4.102.234:8080/api/news', {
+      axios.get('/api/news', {
         params: {
             page: this.page        // 参数 firstName
         }
@@ -182,7 +182,7 @@ export default {
 
     statistics(){
       let that= this
-      axios.get('http://121.4.102.234:8080/api/statistics')
+      axios.get('/api/statistics')
       .then(function (response) {
         console.log(response)
         that.one_plate = response.data.one_plate
@@ -195,7 +195,7 @@ export default {
     },
     statistics_huimaqiang(){
       let that= this
-      axios.get('http://121.4.102.234:8080/api/huimaq')
+      axios.get('/api/huimaq')
       .then(function (response) {
         that.four_plate = response.data.four_plate
         that.five_plate = response.data.five_plate
