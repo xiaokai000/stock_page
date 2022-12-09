@@ -5,6 +5,7 @@
       <el-tabs v-model="activeName">
         <el-tab-pane label="新闻" name="first"></el-tab-pane>
         <el-tab-pane label="统计" name="second"></el-tab-pane>
+        <el-tab-pane label="回马枪" name="three"></el-tab-pane>
       </el-tabs>
     </div>
 
@@ -62,6 +63,71 @@
       </el-row>
     </div>
 
+    <div v-if="activeName == 'three'" style="margin-top: 50px">
+      <el-row>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">4天</div>
+              <div v-for="(item, index) of four_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">5天</div>
+              <div v-for="(item, index) of five_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">6天</div>
+              <div v-for="(item, index) of six_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">7天</div>
+              <div v-for="(item, index) of seven_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+      </el-row>
+
+      <el-row>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">8天</div>
+              <div v-for="(item, index) of eight_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">9天</div>
+              <div v-for="(item, index) of nine_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+        <el-col :span="6">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">10天</div>
+              <div v-for="(item, index) of ten_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </el-col>
+      </el-row>
+
+    </div>
+
 
   </div>
 </template>
@@ -79,18 +145,28 @@ export default {
       activeName: 'first',
       one_plate : [],
       two_plate : [],
-      three_plate : []
+      three_plate : [],
+
+      four_plate : [],
+      five_plate : [],
+      six_plate : [],
+      seven_plate : [],
+      eight_plate : [],
+      nine_plate : [],
+      ten_plate : []
+
     }
   },
   created() {
     this.getNews()
     this.statistics()
+    this.statistics_huimaqiang()
   },
   methods: {
 
     getNews(){
       let that= this
-      axios.get('/api/news', {
+      axios.get('http://121.4.102.234:8080/api/news', {
         params: {
             page: this.page        // 参数 firstName
         }
@@ -106,7 +182,7 @@ export default {
 
     statistics(){
       let that= this
-      axios.get('/api/statistics')
+      axios.get('http://121.4.102.234:8080/api/statistics')
       .then(function (response) {
         console.log(response)
         that.one_plate = response.data.one_plate
@@ -117,6 +193,23 @@ export default {
         console.log(error);
       });
     },
+    statistics_huimaqiang(){
+      let that= this
+      axios.get('http://121.4.102.234:8080/api/huimaq')
+      .then(function (response) {
+        that.four_plate = response.data.four_plate
+        that.five_plate = response.data.five_plate
+        that.six_plate = response.data.six_plate
+        that.seven_plate = response.data.seven_plate
+        that.eight_plate = response.data.eight_plate
+        that.nine_plate = response.data.nine_plate
+        that.ten_plate = response.data.ten_plate
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+
     currentChange(e){
         console.log('当前页:', e)
         this.page = e
