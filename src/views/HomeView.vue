@@ -102,8 +102,6 @@
       </el-row>
 
       <el-row>
-        <el-col :span="6">
-
           <el-col :span="6">
             <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
               <div style="margin-bottom: 20px">6天</div>
@@ -120,7 +118,7 @@
                 </div>
             </div>
           </el-col>
-
+        <el-col :span="6">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">8天</div>
               <div v-for="(item, index) of eight_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
