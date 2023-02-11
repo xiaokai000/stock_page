@@ -65,7 +65,7 @@
 
     <div v-if="activeName == 'three'" style="margin-top: 50px">
       <el-row>
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">2天</div>
               <div v-for="(item, index) of two_plate_c" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -73,7 +73,7 @@
               </div>
           </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">3天</div>
               <div v-for="(item, index) of three_plate_c" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -82,7 +82,7 @@
           </div>
         </el-col>
 
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">4天</div>
               <div v-for="(item, index) of four_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -90,7 +90,7 @@
               </div>
           </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">5天</div>
               <div v-for="(item, index) of five_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -99,44 +99,42 @@
           </div>
         </el-col>
 
-      </el-row>
 
-      <el-row>
-          <el-col :span="6">
-            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-              <div style="margin-bottom: 20px">6天</div>
-                <div v-for="(item, index) of six_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
-                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-                </div>
-            </div>
-          </el-col>
-          <el-col :span="6">
-            <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-              <div style="margin-bottom: 20px">7天</div>
-                <div v-for="(item, index) of seven_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
-                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-                </div>
-            </div>
-          </el-col>
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">8天</div>
-              <div v-for="(item, index) of eight_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <div style="margin-bottom: 20px">6天</div>
+              <div v-for="(item, index) of six_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
         </el-col>
-        <el-col :span="6">
+        <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">9天</div>
-              <div v-for="(item, index) of nine_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <div style="margin-bottom: 20px">7天</div>
+              <div v-for="(item, index) of seven_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
         </el-col>
+      <el-col :span="3">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="margin-bottom: 20px">8天</div>
+            <div v-for="(item, index) of eight_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+        </div>
+      </el-col>
+      <el-col :span="3">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="margin-bottom: 20px">9天</div>
+            <div v-for="(item, index) of nine_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+        </div>
+      </el-col>
+
 
       </el-row>
-
     </div>
 
 
