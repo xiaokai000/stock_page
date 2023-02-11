@@ -68,7 +68,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">2天</div>
-              <div v-for="(item, index) of two_plate_c" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of two_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -76,7 +76,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">3天</div>
-              <div v-for="(item, index) of three_plate_c" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of three_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -85,7 +85,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">4天</div>
-              <div v-for="(item, index) of four_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of four_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -93,7 +93,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">5天</div>
-              <div v-for="(item, index) of five_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of five_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -103,7 +103,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">6天</div>
-              <div v-for="(item, index) of six_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of six_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -111,7 +111,7 @@
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">7天</div>
-              <div v-for="(item, index) of seven_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of seven_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
@@ -119,7 +119,7 @@
       <el-col :span="3">
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
           <div style="margin-bottom: 20px">8天</div>
-            <div v-for="(item, index) of eight_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <div v-for="(item, index) of eight_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
             </div>
         </div>
@@ -127,7 +127,7 @@
       <el-col :span="3">
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
           <div style="margin-bottom: 20px">9天</div>
-            <div v-for="(item, index) of nine_plate" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <div v-for="(item, index) of nine_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
             </div>
         </div>
@@ -157,16 +157,14 @@ export default {
       three_plate : [],
 
 
-      two_plate_c : [],
-      three_plate_c : [],
-      four_plate : [],
-      five_plate : [],
-      six_plate : [],
-      seven_plate : [],
-      eight_plate : [],
-      nine_plate : [],
-      ten_plate : []
-
+      two_days : [],
+      three_days : [],
+      four_days : [],
+      five_days : [],
+      six_days : [],
+      seven_days : [],
+      eight_days : [],
+      nine_days : []
     }
   },
   created() {
@@ -209,15 +207,14 @@ export default {
       let that= this
       axios.get('/api/huimaq')
       .then(function (response) {
-        that.two_plate_c = response.data.two_plate
-        that.three_plate_c = response.data.three_plate
-        that.four_plate = response.data.four_plate
-        that.five_plate = response.data.five_plate
-        that.six_plate = response.data.six_plate
-        that.seven_plate = response.data.seven_plate
-        that.eight_plate = response.data.eight_plate
-        that.nine_plate = response.data.nine_plate
-        that.ten_plate = response.data.ten_plate
+        that.two_days = response.data.two_days
+        that.three_days = response.data.three_days
+        that.four_days = response.data.four_days
+        that.five_days = response.data.five_days
+        that.six_days = response.data.six_days
+        that.seven_days = response.data.seven_days
+        that.eight_days = response.data.eight_days
+        that.nine_days = response.data.nine_days
       })
       .catch(function (error) {
         console.log(error);
