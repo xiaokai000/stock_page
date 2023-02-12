@@ -143,7 +143,7 @@ export default {
       news: [],
       page: 1,
       total: 0,
-      activeName: 'first',
+      activeName: 'second',
       one_plate : [],
       two_plate : [],
       three_plate : [],
