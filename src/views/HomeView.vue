@@ -65,22 +65,6 @@
 
     <div v-if="activeName == 'three'" style="margin-top: 50px">
       <el-row>
-        <el-col :span="3">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">2天</div>
-              <div v-for="(item, index) of two_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-              </div>
-          </div>
-        </el-col>
-        <el-col :span="3">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">3天</div>
-              <div v-for="(item, index) of three_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-              </div>
-          </div>
-        </el-col>
 
         <el-col :span="3">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
@@ -132,6 +116,14 @@
             </div>
         </div>
       </el-col>
+      <el-col :span="3">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="margin-bottom: 20px">10天</div>
+            <div v-for="(item, index) of ten_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+        </div>
+      </el-col>
 
 
       </el-row>
@@ -156,15 +148,14 @@ export default {
       two_plate : [],
       three_plate : [],
 
-
-      two_days : [],
-      three_days : [],
       four_days : [],
       five_days : [],
       six_days : [],
       seven_days : [],
       eight_days : [],
-      nine_days : []
+      nine_days : [],
+      ten_days : [],
+
     }
   },
   created() {
@@ -207,14 +198,13 @@ export default {
       let that= this
       axios.get('/api/huimaq')
       .then(function (response) {
-        that.two_days = response.data.two_days
-        that.three_days = response.data.three_days
         that.four_days = response.data.four_days
         that.five_days = response.data.five_days
         that.six_days = response.data.six_days
         that.seven_days = response.data.seven_days
         that.eight_days = response.data.eight_days
         that.nine_days = response.data.nine_days
+        that.ten_days = response.data.ten_days
       })
       .catch(function (error) {
         console.log(error);
