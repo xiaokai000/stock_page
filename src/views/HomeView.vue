@@ -66,7 +66,7 @@
     <div v-if="activeName == 'three'" style="margin-top: 50px">
       <el-row>
 
-        <el-col :span="3">
+        <el-col :span="2">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">4天</div>
               <div v-for="(item, index) of four_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -74,7 +74,7 @@
               </div>
           </div>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="2">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">5天</div>
               <div v-for="(item, index) of five_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -84,7 +84,7 @@
         </el-col>
 
 
-        <el-col :span="3">
+        <el-col :span="2">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">6天</div>
               <div v-for="(item, index) of six_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -92,7 +92,7 @@
               </div>
           </div>
         </el-col>
-        <el-col :span="3">
+        <el-col :span="2">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">7天</div>
               <div v-for="(item, index) of seven_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -100,7 +100,7 @@
               </div>
           </div>
         </el-col>
-      <el-col :span="3">
+        <el-col :span="2">
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
           <div style="margin-bottom: 20px">8天</div>
             <div v-for="(item, index) of eight_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -108,7 +108,7 @@
             </div>
         </div>
       </el-col>
-      <el-col :span="3">
+      <el-col :span="2">
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
           <div style="margin-bottom: 20px">9天</div>
             <div v-for="(item, index) of nine_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -116,7 +116,7 @@
             </div>
         </div>
       </el-col>
-      <el-col :span="3">
+      <el-col :span="2">
         <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
           <div style="margin-bottom: 20px">10天</div>
             <div v-for="(item, index) of ten_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
@@ -124,8 +124,22 @@
             </div>
         </div>
       </el-col>
-
-
+      <el-col :span="2">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="margin-bottom: 20px">11天</div>
+            <div v-for="(item, index) of eleven_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+        </div>
+      </el-col>
+      <el-col :span="2">
+        <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="margin-bottom: 20px">12天</div>
+            <div v-for="(item, index) of twelve_days" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+        </div>
+      </el-col>
       </el-row>
     </div>
 
@@ -155,6 +169,8 @@ export default {
       eight_days : [],
       nine_days : [],
       ten_days : [],
+      eleven_days : [],
+      twelve_days : [],
 
     }
   },
@@ -205,6 +221,8 @@ export default {
         that.eight_days = response.data.eight_days
         that.nine_days = response.data.nine_days
         that.ten_days = response.data.ten_days
+        that.eleven_days = response.data.eleven_days
+        that.twelve_days = response.data.twelve_days
       })
       .catch(function (error) {
         console.log(error);
