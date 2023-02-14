@@ -63,19 +63,19 @@
       </el-row>
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; margin-left: 300px;">
-      <el-row>
+    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 100px">
+      <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
-        <el-col :span="2.5" v-for="(item, index) of huimaq_data">
+        <div v-for="(item, index) of huimaq_data">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
+              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
               </div>
           </div>
-        </el-col>
+        </div>
 
-      </el-row>
+      </div>
     </div>
 
 
@@ -148,7 +148,7 @@ export default {
     },
     statistics_huimaqiang(){
       let that= this
-      axios.get('/api/huimaq')
+      axios.get('h/api/huimaq')
       .then(function (response) {
         that.huimaq_data = response.data
         
