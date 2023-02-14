@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
 
-    <div style="display: flex; justify-content: center" >
+    <div style="display: flex; justify-content: center; align-items:center" >
       <el-tabs v-model="activeName">
         <el-tab-pane label="新闻" name="first"></el-tab-pane>
         <el-tab-pane label="统计" name="second"></el-tab-pane>
