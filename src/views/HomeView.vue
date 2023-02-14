@@ -66,7 +66,7 @@
     <div v-if="activeName == 'three'" style="margin-top: 50px">
       <el-row>
 
-        <el-col :span="3" v-for="(item, index) of huimaq_data">
+        <el-col :span="2.5" v-for="(item, index) of huimaq_data">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-left: 10px; width: 100px; margin-top: 5px">
