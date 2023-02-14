@@ -148,7 +148,7 @@ export default {
     },
     statistics_huimaqiang(){
       let that= this
-      axios.get('h/api/huimaq')
+      axios.get('/api/huimaq')
       .then(function (response) {
         that.huimaq_data = response.data
         
