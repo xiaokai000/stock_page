@@ -63,7 +63,7 @@
       </el-row>
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; margin-left: 150px;">
+    <div v-if="activeName == 'three'" style="margin-top: 50px; margin-left: 300px;">
       <el-row>
 
         <el-col :span="2.5" v-for="(item, index) of huimaq_data">
