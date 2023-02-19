@@ -58,20 +58,17 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 100px">
-      <div style="display: flex; justify-content: space-around; align-items:flex-start">
+    <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 50px">
 
-        <div v-for="(item, index) of shizixing_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-              </div>
+      <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
+
+          <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
+          <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
           </div>
-        </div>
 
       </div>
-    </div>
+
+  </div>
 
     <div v-if="activeName == 'five'" style="margin-top: 50px; padding: 0px 100px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
@@ -88,20 +85,16 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 100px">
+    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 50px">
 
-      <div style="display: flex; justify-content: space-around; align-items:flex-start">
+        <div v-for="(item, index) of zhouxian_shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
 
-        <div v-for="(item, index) of zhouxian_shizixing_data" style="width: 100px">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-              </div>
-          </div>
+            <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+            </div>
+
         </div>
 
-      </div>
     </div>
 
 
