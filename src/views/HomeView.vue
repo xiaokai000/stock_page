@@ -8,6 +8,7 @@
         <el-tab-pane label="回马枪" name="three"></el-tab-pane>
         <el-tab-pane label="十字星" name="four"></el-tab-pane>
         <el-tab-pane label="下影线" name="five"></el-tab-pane>
+        <el-tab-pane label="周线十字星" name="six"></el-tab-pane>
       </el-tabs>
     </div>
 
@@ -87,6 +88,21 @@
       </div>
     </div>
 
+    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 100px">
+      <div style="display: flex; justify-content: space-around; align-items:flex-start">
+
+        <div v-for="(item, index) of zhouxian_shizixing_data">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">{{ item.label }}</div>
+              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
 
   </div>
 </template>
@@ -107,7 +123,8 @@ export default {
       lianban_data: [],
       huimaq_data: [],
       shizixing_data: [],
-      xiayingxian_data: []
+      xiayingxian_data: [],
+      zhouxian_shizixing_data: []
 
     }
   },
@@ -117,6 +134,7 @@ export default {
     this.statistics_huimaqiang()
     this.getShiZiXing()
     this.getXiaYingXian()
+    this.getZhouShiZiXing()
   },
   methods: {
 
@@ -136,6 +154,17 @@ export default {
       axios.get('/api/shizixing')
       .then(function (response) {
         that.shizixing_data = response.data
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    getZhouShiZiXing(){
+      let that= this
+      axios.get('/api/zhouxian_shizixing')
+      .then(function (response) {
+        that.zhouxian_shizixing_data = response.data
 
       })
       .catch(function (error) {
