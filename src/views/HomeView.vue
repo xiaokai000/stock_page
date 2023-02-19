@@ -89,9 +89,10 @@
     </div>
 
     <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 100px">
+
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
-        <div v-for="(item, index) of zhouxian_shizixing_data">
+        <div v-for="(item, index) of zhouxian_shizixing_data" style="width: 100px">
           <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
