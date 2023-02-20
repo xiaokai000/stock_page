@@ -13,7 +13,7 @@
     </div>
 
 
-    <div style="padding: 10px" v-if="activeName == 'first'">
+    <div style="padding: 0px 300px" v-if="activeName == 'first'">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of zhangting_data">
@@ -28,7 +28,7 @@
       </div>
 
     </div>
-    <div v-if="activeName == 'second'" style="margin-top: 50px">
+    <div v-if="activeName == 'second'" style="margin-top: 50px; padding: 0px 300px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of lianban_data">
@@ -43,7 +43,7 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 100px">
+    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 300px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of huimaq_data">
@@ -58,7 +58,7 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 50px">
+    <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 450px">
 
       <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
 
@@ -85,7 +85,7 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 50px">
+    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 450px">
 
         <div v-for="(item, index) of zhouxian_shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
 
