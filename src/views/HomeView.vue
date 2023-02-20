@@ -44,7 +44,7 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 300px">
+    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 100px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of huimaq_data">
