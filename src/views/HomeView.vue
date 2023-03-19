@@ -115,18 +115,13 @@
     </div>
 
     <div v-if="activeName == 'eight'" style="margin-top: 50px; padding: 0px 100px">
-      <div style="display: flex; justify-content: space-around; align-items:flex-start">
+      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
 
-        <div v-for="(item, index) of lianxu_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
-              </div>
-          </div>
+        <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
+        <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">{{ item.stock_name }}</a>
         </div>
 
-      </div>
+    </div>
     </div>
 
   </div>
