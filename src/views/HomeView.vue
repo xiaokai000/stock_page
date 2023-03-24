@@ -8,7 +8,6 @@
         <el-tab-pane label="回马枪" name="three"></el-tab-pane>
         <el-tab-pane label="十字星" name="four"></el-tab-pane>
         <el-tab-pane label="下影线" name="five"></el-tab-pane>
-        <el-tab-pane label="周线十字星" name="six"></el-tab-pane>
         <el-tab-pane label="底部大涨" name="seven"></el-tab-pane>
         <el-tab-pane label="连续上涨" name="eight"></el-tab-pane>
       </el-tabs>
@@ -51,7 +50,7 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 100px">
+    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 200px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of huimaq_data">
@@ -71,9 +70,9 @@
 
     <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 450px">
 
-      <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
+      <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
 
-          <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
+          <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
               <span>{{ item.stock_name }}</span> 
               <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
@@ -102,21 +101,6 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 450px">
-
-        <div v-for="(item, index) of zhouxian_shizixing_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
-
-            <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                <span>{{ item.stock_name }}</span> 
-                <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
-               </a>
-            </div>
-
-        </div>
-
-    </div>
-
     <div v-if="activeName == 'seven'" style="margin-top: 50px; padding: 0px 100px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
@@ -135,10 +119,10 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'eight'" style="margin-top: 50px; padding: 0px 100px">
-      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: space-around; align-items:flex-start; flex-wrap: wrap;">
+    <div v-if="activeName == 'eight'" style="margin-top: 50px; padding: 0px 200px">
+      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
 
-        <div v-for="(item, index) of item.value" :key="index" style="margin: 15px">
+        <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 80px">
           <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
             <span>{{ item.stock_name }}</span> 
             <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
@@ -170,7 +154,8 @@ export default {
       xiayingxian_data: [],
       zhouxian_shizixing_data: [],
       dibu_data: [],
-      lianxu_data:[]
+      lianxu_data:[],
+      host: 'http://121.4.102.234:8080'
 
     }
   },
@@ -180,7 +165,6 @@ export default {
     this.statistics_huimaqiang()
     this.getShiZiXing()
     this.getXiaYingXian()
-    this.getZhouShiZiXing()
     this.getDiBu()
     this.getLianXu()
   },
@@ -188,7 +172,7 @@ export default {
 
     getNews(){
       let that= this
-      axios.get('/api/zhangting')
+      axios.get( that.host + '/api/zhangting')
       .then(function (response) {
         that.zhangting_data = response.data
 
@@ -199,7 +183,7 @@ export default {
     },
     getShiZiXing(){
       let that= this
-      axios.get('/api/shizixing')
+      axios.get( that.host + '/api/shizixing')
       .then(function (response) {
         that.shizixing_data = response.data
 
@@ -208,20 +192,10 @@ export default {
         console.log(error);
       });
     },
-    getZhouShiZiXing(){
-      let that= this
-      axios.get('/api/zhouxian_shizixing')
-      .then(function (response) {
-        that.zhouxian_shizixing_data = response.data
 
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-    },
     getXiaYingXian(){
       let that= this
-      axios.get('/api/xiayingxian')
+      axios.get( that.host + '/api/xiayingxian')
       .then(function (response) {
         that.xiayingxian_data = response.data
 
@@ -233,7 +207,7 @@ export default {
 
     statistics(){
       let that= this
-      axios.get('/api/lianban')
+      axios.get( that.host + '/api/lianban')
       .then(function (response) {
         console.log(response)
         that.lianban_data = response.data
@@ -245,7 +219,7 @@ export default {
     },
     statistics_huimaqiang(){
       let that= this
-      axios.get('/api/huimaq')
+      axios.get( that.host + '/api/huimaq')
       .then(function (response) {
         that.huimaq_data = response.data
         
@@ -256,7 +230,7 @@ export default {
     },
     getDiBu(){
       let that= this
-      axios.get('/api/dibu')
+      axios.get( that.host + '/api/dibu')
       .then(function (response) {
         that.dibu_data = response.data
         
@@ -267,7 +241,7 @@ export default {
     },
     getLianXu(){
       let that= this
-      axios.get('/api/lianxu')
+      axios.get( that.host + '/api/lianxu')
       .then(function (response) {
         that.lianxu_data = response.data
         
