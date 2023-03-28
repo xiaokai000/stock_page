@@ -22,8 +22,10 @@
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
               <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                 <span>{{ item.stock_name }}</span> 
-                 <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+                <div>
+                  <div>{{ item.stock_name }}</div>
+                  <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                </div>
                 </a>
               </div>
           </div>
@@ -40,8 +42,10 @@
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <span>{{ item.stock_name }}</span> 
-                  <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+                  <div>
+                    <div>{{ item.stock_name }}</div>
+                    <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                  </div>
                  </a>
               </div>
           </div>
@@ -58,8 +62,10 @@
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <span>{{ item.stock_name }}</span> 
-                  <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+                  <div>
+                    <div>{{ item.stock_name }}</div>
+                    <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                  </div>
                  </a>
               </div>
           </div>
@@ -74,8 +80,10 @@
 
           <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-              <span>{{ item.stock_name }}</span> 
-              <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+              <div>
+                <div>{{ item.stock_name }}</div>
+                <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+              </div>
              </a>
           </div>
 
@@ -91,8 +99,10 @@
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <span>{{ item.stock_name }}</span> 
-                  <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+                  <div>
+                    <div>{{ item.stock_name }}</div>
+                    <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                  </div>
                  </a>
               </div>
           </div>
@@ -109,8 +119,10 @@
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <span>{{ item.stock_name }}</span> 
-                  <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+                  <div>
+                    <div>{{ item.stock_name }}</div>
+                    <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                  </div>
                  </a>
               </div>
           </div>
@@ -124,8 +136,11 @@
 
         <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 100px">
           <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-            <span>{{ item.stock_name }}</span> 
-            <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
+            <div>
+              <div>{{ item.stock_name }}</div>
+              <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+            </div>
+
            </a>
         </div>
 
