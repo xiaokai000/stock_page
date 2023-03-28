@@ -80,10 +80,10 @@
 
           <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-              <div>
-                <div>{{ item.stock_name }}</div>
-                <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
-              </div>
+
+                <span>{{ item.stock_name }}</span>
+                <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+
              </a>
           </div>
 
