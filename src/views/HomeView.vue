@@ -33,7 +33,7 @@
 
     </div>
 
-    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 200px">
+    <div v-if="activeName == 'three'" style="margin-top: 50px; padding: 0px 100px">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of huimaq_data">
@@ -105,14 +105,14 @@ export default {
       news: [],
       page: 1,
       total: 0,
-      activeName: 'second',
+      activeName: 'first',
 
       zhangting_data: [],
       huimaq_data: [],
       shizixing_data: [],
       xiayingxian_data: [],
-      // host: 'http://121.4.102.234:8080',
-      host: ''
+      host: 'http://121.4.102.234:8080'
+      // host: ''
 
     }
   },
