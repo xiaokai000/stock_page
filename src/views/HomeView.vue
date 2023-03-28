@@ -119,10 +119,10 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'eight'" style="margin-top: 50px; padding: 0px 200px">
+    <div v-if="activeName == 'eight'" style="margin-top: 50px; padding: 0px 100px">
       <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
 
-        <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 80px">
+        <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 100px">
           <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
             <span>{{ item.stock_name }}</span> 
             <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span> 
