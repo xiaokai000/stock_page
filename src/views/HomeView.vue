@@ -16,15 +16,16 @@
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of zhangting_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="display: flex; justify-content: center; align-items: flex-start; flex-direction: column" >
             <div style="margin-bottom: 20px">{{ item.label }}</div>
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                <div>
-                  <div>{{ item.stock_name }}</div>
-                  <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
-                </div>
-                </a>
+                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
+                    <div>
+                      <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                      <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+                    </div>
+
+                  </a>
               </div>
           </div>
         </div>
@@ -37,12 +38,12 @@
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of huimaq_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+          <div style="display: flex; justify-content: center; align-items: flex-start; flex-direction: column" >
             <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
+              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 15px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
                   <div>
-                    <div>{{ item.stock_name }}</div>
+                    <div><span style="width:100rpx" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> </div>
                     <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
                   </div>
                  </a>
@@ -60,8 +61,10 @@
           <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
 
-                <span>{{ item.stock_name }}</span>
+              <div>
+                <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
                 <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+              </div>
 
              </a>
           </div>
@@ -79,8 +82,8 @@
               <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
                 <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
                   <div>
-                    <div>{{ item.stock_name }}</div>
-                    <div :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</div>
+                    <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                    <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
                   </div>
                  </a>
               </div>
@@ -111,8 +114,8 @@ export default {
       huimaq_data: [],
       shizixing_data: [],
       xiayingxian_data: [],
-      host: 'http://121.4.102.234:8080'
-      // host: ''
+      // host: 'http://121.4.102.234:8080'
+      host: ''
 
     }
   },
@@ -198,6 +201,12 @@ a {
   text-decoration: none;
 }
 
+a,a:hover,a:active{
+
+  color:#0000FF;
+  
+  }
+
 .item {
   border-radius: 10px;
   background: 	#DCDCDC;
@@ -218,6 +227,10 @@ a {
 
 .green {
   color: green;
+}
+
+.black {
+  color: 	#EE9A00;
 }
 
 </style>
