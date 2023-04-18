@@ -55,9 +55,48 @@
       </div>
     </div>
 
-    <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 450px">
+        <div v-if="activeName == 'four'" style="margin-top: 50px; padding: 0px 150px">
 
-      <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+          <div v-for="(item, index) of shizixing_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+
+              <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
+                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
+
+                  <div>
+                    <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                    <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+                  </div>
+
+                </a>
+              </div>
+
+          </div>
+
+      </div>
+
+      <div v-if="activeName == 'five'" style="margin-top: 50px; padding: 0px 150px">
+
+        <div v-for="(item, index) of xiayingxian_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+
+            <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
+              <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
+
+                <div>
+                  <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                  <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+                </div>
+
+              </a>
+            </div>
+
+        </div>
+
+    </div>
+
+    
+    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 150px">
+
+      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
 
           <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
@@ -67,52 +106,11 @@
                 <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
               </div>
 
-             </a>
+            </a>
           </div>
 
       </div>
 
-  </div>
-
-    <div v-if="activeName == 'five'" style="margin-top: 50px; padding: 0px 100px">
-      <div style="display: flex; justify-content: space-around; align-items:flex-start">
-
-        <div v-for="(item, index) of xiayingxian_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <div>
-                    <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
-                    <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
-                  </div>
-                 </a>
-              </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    
-    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 100px">
-      <div style="display: flex; justify-content: space-around; align-items:flex-start">
-
-        <div v-for="(item, index) of lianxu_data">
-          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
-            <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <div>
-                    <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
-                    <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
-                  </div>
-                 </a>
-              </div>
-          </div>
-        </div>
-
-      </div>
     </div>
 
 
