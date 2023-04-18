@@ -7,12 +7,13 @@
         <el-tab-pane label="回马枪" name="three"></el-tab-pane>
         <el-tab-pane label="十字星" name="four"></el-tab-pane>
         <el-tab-pane label="下影线" name="five"></el-tab-pane>
+        <el-tab-pane label="连续上涨" name="six"></el-tab-pane>
 
       </el-tabs>
     </div>
 
 
-    <div style="padding: 0px 300px" v-if="activeName == 'first'">
+    <div style="padding: 0px 200px" v-if="activeName == 'first'">
       <div style="display: flex; justify-content: space-around; align-items:flex-start">
 
         <div v-for="(item, index) of zhangting_data">
@@ -93,6 +94,26 @@
       </div>
     </div>
 
+    
+    <div v-if="activeName == 'six'" style="margin-top: 50px; padding: 0px 100px">
+      <div style="display: flex; justify-content: space-around; align-items:flex-start">
+
+        <div v-for="(item, index) of lianxu_data">
+          <div style="display: flex; justify-content: center; align-items: center; flex-direction: column" >
+            <div style="margin-bottom: 20px">{{ item.label }}</div>
+              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
+                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
+                  <div>
+                    <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                    <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+                  </div>
+                 </a>
+              </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
 
   </div>
@@ -114,6 +135,7 @@ export default {
       huimaq_data: [],
       shizixing_data: [],
       xiayingxian_data: [],
+      lianxu_data: [],
       // host: 'http://121.4.102.234:8080'
       host: ''
 
@@ -124,6 +146,7 @@ export default {
     this.statistics_huimaqiang()
     this.getShiZiXing()
     this.getXiaYingXian()
+    this.lianxu()
   },
   methods: {
 
@@ -168,6 +191,17 @@ export default {
       axios.get( that.host + '/api/huimaq')
       .then(function (response) {
         that.huimaq_data = response.data
+        
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    lianxu(){
+      let that= this
+      axios.get( that.host + '/api/lianxu')
+      .then(function (response) {
+        that.lianxu_data = response.data
         
       })
       .catch(function (error) {
