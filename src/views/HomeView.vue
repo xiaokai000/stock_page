@@ -8,6 +8,7 @@
         <el-tab-pane label="十字星" name="four"></el-tab-pane>
         <el-tab-pane label="下影线" name="five"></el-tab-pane>
         <el-tab-pane label="连续上涨" name="six"></el-tab-pane>
+        <el-tab-pane label="底部大涨" name="seven"></el-tab-pane>
 
       </el-tabs>
     </div>
@@ -113,6 +114,25 @@
 
     </div>
 
+    <div v-if="activeName == 'seven'" style="margin-top: 50px; padding: 0px 150px">
+
+      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+
+          <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
+            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
+
+              <div>
+                <span style="margin-right: 5px" :class="{'black':item.stock_code.startsWith('3')}">{{ item.stock_name }}</span> 
+                <span :class="{'red':item.pctChg > 0,'green':item.pctChg < 0}">{{ item.pctChg }}</span>
+              </div>
+
+            </a>
+          </div>
+
+      </div>
+
+    </div>
+
 
   </div>
 </template>
@@ -134,6 +154,7 @@ export default {
       shizixing_data: [],
       xiayingxian_data: [],
       lianxu_data: [],
+      dibu_data: [],
       // host: 'http://121.4.102.234:8080'
       host: ''
 
@@ -145,6 +166,7 @@ export default {
     this.getShiZiXing()
     this.getXiaYingXian()
     this.lianxu()
+    this.getDibu()
   },
   methods: {
 
@@ -153,6 +175,17 @@ export default {
       axios.get( that.host + '/api/zhangting')
       .then(function (response) {
         that.zhangting_data = response.data
+
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    },
+    getDibu(){
+      let that= this
+      axios.get( that.host + '/api/dibu')
+      .then(function (response) {
+        that.dibu_data = response.data
 
       })
       .catch(function (error) {
