@@ -116,7 +116,7 @@
 
     <div v-if="activeName == 'seven'" style="margin-top: 50px; padding: 0px 150px">
 
-      <div v-for="(item, index) of lianxu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+      <div v-for="(item, index) of dibu_data" style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
 
           <div v-for="(item, index) of item.value" :key="index" style="margin: 10px; width: 150px">
             <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
