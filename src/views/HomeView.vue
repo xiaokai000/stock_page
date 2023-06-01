@@ -156,17 +156,26 @@ export default {
       lianxu_data: [],
       dibu_data: [],
       // host: 'http://121.4.102.234:8080'
-      host: ''
+      host: '',
+      Intervalid: ''
 
     }
   },
+
+    beforeDestroy() {
+      clearInterval(this.Intervalid)
+    },
+
   created() {
-    this.getNews()
-    this.statistics_huimaqiang()
-    this.getShiZiXing()
-    this.getXiaYingXian()
-    this.lianxu()
-    this.getDibu()
+    this.Intervalid = setInterval(() => {
+            this.getNews()
+            this.statistics_huimaqiang()
+            this.getShiZiXing()
+            this.getXiaYingXian()
+            this.lianxu()
+            this.getDibu()
+     }, 1000)
+
   },
   methods: {
 
