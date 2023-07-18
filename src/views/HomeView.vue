@@ -13,50 +13,20 @@
       </el-tabs>
     </div>
 
-    <div v-if="['1', '2'].includes(activeName)">
-      <div style="padding: 0px 200px">
-        <div style="display: flex; justify-content: space-between; align-items:flex-start;">
-
-          <div v-for="(item, index) of array">
-            <div style="display: flex; justify-content: center; align-items: flex-start; flex-direction: column">
-              <div style="margin-bottom: 20px">{{ item.label }}</div>
-              <div v-for="(item, index) of item.value" :key="index" style="margin-top: 5px">
-                <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-                  <div>
-                    <span style="margin-right: 5px" :class="{ 'black': item.stock_code.startsWith('3') }">{{
-                      item.stock_name
-                    }}</span>
-                    <span :class="{ 'red': item.pctChg > 0, 'green': item.pctChg < 0 }">{{ item.pctChg }}</span>
-                  </div>
-                  <div :id="item.stock_code" style="width: 100px; height: 100px;">
-                  </div>
-                </a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-    <div v-if="['3', '4', '5', '6'].includes(activeName)">
+    <div>
       <div style="margin-top: 50px; padding: 0px 150px">
 
-        <div v-for="(item1, index1) of array"
+        <div v-for="(item, index) of array"
           style="display: flex; justify-content: flex-start; align-items:flex-start; flex-wrap: wrap;">
+          <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
 
-          <div v-for="(item, index) of item1.value" :key="index" style="margin: 10px; width: 150px">
-            <a target="_blank" :href="'https://xueqiu.com/S/' + item.stock_area + item.stock_code">
-
-              <div>
-                <span style="margin-right: 5px" :class="{ 'black': item.stock_code.startsWith('3') }">{{ item.stock_name
-                }}</span>
-                <span :class="{ 'red': item.pctChg > 0, 'green': item.pctChg < 0 }">{{ item.pctChg }}</span>
-              </div>
-            </a>
-            <div :id="item.stock_code" style="width: 100px; height: 100px;">
-                  </div>
+          <div>
+            <span style="margin-right: 5px" :class="{ 'black': item.stock_code.startsWith('3') }">{{ item.stock_name
+            }}</span>
+            <span :class="{ 'red': item.pctChg > 0, 'green': item.pctChg < 0 }">{{ item.pctChg }}</span>
           </div>
+          </a>
+          <div :id="item.stock_code" style="width: 100px; height: 100px;"></div>
         </div>
       </div>
     </div>
@@ -100,6 +70,11 @@ export default {
     setTimeout(() => {
       this.array = this.zhangting_data
     },500)
+
+    setTimeout(() => {
+      this.initChartDom()
+    },500)
+
   },
   watch: {
     activeName(newValue, oldValue) {
@@ -113,40 +88,7 @@ export default {
         ["6", this.dibu_data],
       ]);
       this.array = fruits.get(newValue)
-      setTimeout(()=>{
-
-        for (let x of this.array){
-          for(let y of x.value){
-            if(!y.chartDom){
-              var chartDom = document.getElementById(y.stock_code);
-              var myChart = echarts.init(chartDom);
-              var option;
-              
-              y.chartDom = chartDom
-
-              option = {
-                xAxis: {
-                  data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
-                },
-                yAxis: {},
-                series: [
-                  {
-                    type: 'candlestick',
-                    data: [
-                      [20, 34, 10, 38],
-                      [40, 35, 30, 50],
-                      [31, 38, 33, 44],
-                      [38, 15, 5, 42]
-                    ]
-                  }
-                ]
-              };
-              myChart.setOption(option);
-            }
-
-          }
-        }
-      }, 1000)
+      
 
     }
   },
@@ -160,6 +102,45 @@ export default {
       this.getXiaYingXian()
       this.lianxu()
       this.getDibu()
+    },
+
+    initChartDom(){
+
+      let tmp = []
+      tmp = tmp.concat(this.zhangting_data)
+      tmp = tmp.concat(this.huimaq_data)
+      tmp = tmp.concat(this.shizixing_data)
+      tmp = tmp.concat(this.xiayingxian_data)
+      tmp = tmp.concat(this.lianxu_data)
+      tmp = tmp.concat(this.dibu_data)
+
+      for (let x of tmp){
+        var chartDom = document.getElementById(x.stock_code);
+        console.log(chartDom)
+          var myChart = echarts.init(chartDom);
+          var option;
+          
+          x.chartDom = chartDom
+
+          option = {
+            xAxis: {
+              data: ['2017-10-24', '2017-10-25', '2017-10-26', '2017-10-27']
+            },
+            yAxis: {},
+            series: [
+              {
+                type: 'candlestick',
+                data: [
+                  [20, 34, 10, 38],
+                  [40, 35, 30, 50],
+                  [31, 38, 33, 44],
+                  [38, 15, 5, 42]
+                ]
+              }
+            ]
+          };
+          myChart.setOption(option);
+      }
     },
 
     getZhangting() {
