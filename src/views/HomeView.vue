@@ -135,7 +135,8 @@ export default {
       xiayingxian_data: [],
       lianxu_data: [],
       // host: 'http://121.4.102.234:8080'
-      host: ''
+      host: '',
+      
 
     }
   },
@@ -145,6 +146,15 @@ export default {
     this.getShiZiXing()
     this.getXiaYingXian()
     this.lianxu()
+
+    let timer = setInterval(() => {
+      this.getNews()
+      this.statistics_huimaqiang()
+      this.getShiZiXing()
+      this.getXiaYingXian()
+      this.lianxu()
+    },500)
+
   },
   methods: {
 
